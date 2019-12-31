@@ -1,17 +1,18 @@
 <?php
+
 /**
- * @link      http://github.com/zendframework/zend-mvc-console for the canonical source repository
- * @copyright Copyright (c) 2005-2016 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
+ * @see       https://github.com/laminas/laminas-mvc-console for the canonical source repository
+ * @copyright https://github.com/laminas/laminas-mvc-console/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas/laminas-mvc-console/blob/master/LICENSE.md New BSD License
  */
 
-namespace Zend\Mvc\Console\Router;
+namespace Laminas\Mvc\Console\Router;
 
 use Interop\Container\ContainerInterface;
-use Zend\Console\Console;
-use Zend\Console\Request as ConsoleRequest;
-use Zend\ServiceManager\DelegatorFactoryInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
+use Laminas\Console\Console;
+use Laminas\Console\Request as ConsoleRequest;
+use Laminas\ServiceManager\DelegatorFactoryInterface;
+use Laminas\ServiceManager\ServiceLocatorInterface;
 
 /**
  * Delegator factory for the Router service.
@@ -28,7 +29,7 @@ class ConsoleRouterDelegatorFactory implements DelegatorFactoryInterface
      */
     private $knownRouterNames = [
         'router',
-        'zend\\router\routestackinterface',
+        'laminas\\router\routestackinterface',
     ];
 
     /**
@@ -36,7 +37,7 @@ class ConsoleRouterDelegatorFactory implements DelegatorFactoryInterface
      * @param string $name
      * @param callable $callback
      * @param null|array $options
-     * @return \Zend\Mvc\Router\RouteStackInterface
+     * @return \Laminas\Mvc\Router\RouteStackInterface
      */
     public function __invoke(ContainerInterface $container, $name, callable $callback, array $options = null)
     {
@@ -52,7 +53,7 @@ class ConsoleRouterDelegatorFactory implements DelegatorFactoryInterface
     }
 
     /**
-     * zend-servicemanager v2 compatibility.
+     * laminas-servicemanager v2 compatibility.
      *
      * Proxies to __invoke().
      *
@@ -60,7 +61,7 @@ class ConsoleRouterDelegatorFactory implements DelegatorFactoryInterface
      * @param string $name
      * @param string $requestedName
      * @param callable $callback
-     * @return \Zend\Mvc\Router\RouteStackInterface
+     * @return \Laminas\Mvc\Router\RouteStackInterface
      */
     public function createDelegatorWithName(ServiceLocatorInterface $container, $name, $requestedName, $callback)
     {
