@@ -1,21 +1,22 @@
 <?php
+
 /**
- * @link      http://github.com/zendframework/zend-mvc-console for the canonical source repository
- * @copyright Copyright (c) 2005-2016 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
+ * @see       https://github.com/laminas/laminas-mvc-console for the canonical source repository
+ * @copyright https://github.com/laminas/laminas-mvc-console/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas/laminas-mvc-console/blob/master/LICENSE.md New BSD License
  */
 
-namespace Zend\Mvc\Console\Service;
+namespace Laminas\Mvc\Console\Service;
 
 use Interop\Container\ContainerInterface;
-use Zend\Console\Console;
-use Zend\ServiceManager\DelegatorFactoryInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
-use Zend\View\Helper as ViewHelper;
-use Zend\View\HelperPluginManager;
+use Laminas\Console\Console;
+use Laminas\ServiceManager\DelegatorFactoryInterface;
+use Laminas\ServiceManager\ServiceLocatorInterface;
+use Laminas\View\Helper as ViewHelper;
+use Laminas\View\HelperPluginManager;
 
 /**
- * Delegator factory for the zend-view helper manager.
+ * Delegator factory for the laminas-view helper manager.
  *
  * Injects the alternate Url and BasePath helper factories if the current
  * environment is a console environment.
@@ -41,7 +42,7 @@ class ConsoleViewHelperManagerDelegatorFactory implements DelegatorFactoryInterf
     }
 
     /**
-     * zend-servicemanager v2 compatibility.
+     * laminas-servicemanager v2 compatibility.
      *
      * Proxies to __invoke().
      *
@@ -65,11 +66,11 @@ class ConsoleViewHelperManagerDelegatorFactory implements DelegatorFactoryInterf
     {
         $urlFactory = $this->createUrlHelperFactory($container);
         $plugins->setFactory(ViewHelper\Url::class, $urlFactory);
-        $plugins->setFactory('zendviewhelperurl', $urlFactory);
+        $plugins->setFactory('laminasviewhelperurl', $urlFactory);
 
         $basePathFactory = $this->createBasePathHelperFactory($container);
         $plugins->setFactory(ViewHelper\BasePath::class, $basePathFactory);
-        $plugins->setFactory('zendviewhelperbasepath', $basePathFactory);
+        $plugins->setFactory('laminasviewhelperbasepath', $basePathFactory);
 
         return $plugins;
     }
