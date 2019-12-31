@@ -1,20 +1,21 @@
 <?php
+
 /**
- * @link      http://github.com/zendframework/zend-mvc-console for the canonical source repository
- * @copyright Copyright (c) 2005-2016 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
+ * @see       https://github.com/laminas/laminas-mvc-console for the canonical source repository
+ * @copyright https://github.com/laminas/laminas-mvc-console/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas/laminas-mvc-console/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZendTest\Mvc\Console\View;
+namespace LaminasTest\Mvc\Console\View;
 
+use Laminas\Console\Response;
+use Laminas\EventManager\EventManager;
+use Laminas\EventManager\Test\EventListenerIntrospectionTrait;
+use Laminas\Mvc\Application;
+use Laminas\Mvc\Console\View\ExceptionStrategy;
+use Laminas\Mvc\Console\View\ViewModel;
+use Laminas\Mvc\MvcEvent;
 use PHPUnit_Framework_TestCase as TestCase;
-use Zend\Console\Response;
-use Zend\EventManager\EventManager;
-use Zend\EventManager\Test\EventListenerIntrospectionTrait;
-use Zend\Mvc\Application;
-use Zend\Mvc\Console\View\ExceptionStrategy;
-use Zend\Mvc\Console\View\ViewModel;
-use Zend\Mvc\MvcEvent;
 
 class ExceptionStrategyTest extends TestCase
 {

@@ -1,47 +1,48 @@
 <?php
+
 /**
- * @link      http://github.com/zendframework/zend-mvc-console for the canonical source repository
- * @copyright Copyright (c) 2005-2016 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
+ * @see       https://github.com/laminas/laminas-mvc-console for the canonical source repository
+ * @copyright https://github.com/laminas/laminas-mvc-console/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas/laminas-mvc-console/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZendTest\Mvc\Console\View;
+namespace LaminasTest\Mvc\Console\View;
 
 use Interop\Container\ContainerInterface;
+use Laminas\Console\Request as ConsoleRequest;
+use Laminas\Console\Response as ConsoleResponse;
+use Laminas\EventManager\EventManager;
+use Laminas\EventManager\EventManagerInterface;
+use Laminas\EventManager\EventsCapableInterface;
+use Laminas\EventManager\ListenerAggregateInterface;
+use Laminas\EventManager\SharedEventManager;
+use Laminas\EventManager\SharedEventManagerInterface;
+use Laminas\EventManager\Test\EventListenerIntrospectionTrait;
+use Laminas\Mvc\Application;
+use Laminas\Mvc\Console\Service\ConsoleViewManagerFactory;
+use Laminas\Mvc\Console\View\CreateViewModelListener;
+use Laminas\Mvc\Console\View\DefaultRenderingStrategy;
+use Laminas\Mvc\Console\View\ExceptionStrategy;
+use Laminas\Mvc\Console\View\InjectNamedConsoleParamsListener;
+use Laminas\Mvc\Console\View\InjectViewModelListener;
+use Laminas\Mvc\Console\View\RouteNotFoundStrategy;
+use Laminas\Mvc\Console\View\ViewManager;
+use Laminas\Mvc\MvcEvent;
+use Laminas\Mvc\Service\ServiceListenerFactory;
+use Laminas\Mvc\Service\ServiceManagerConfig;
+use Laminas\ServiceManager\ServiceManager;
+use Laminas\Stdlib\DispatchableInterface;
+use Laminas\View\View;
 use PHPUnit_Framework_Assert;
 use PHPUnit_Framework_TestCase as TestCase;
 use Prophecy\Argument;
 use ReflectionClass;
 use ReflectionProperty;
-use Zend\Console\Request as ConsoleRequest;
-use Zend\Console\Response as ConsoleResponse;
-use Zend\EventManager\EventManager;
-use Zend\EventManager\EventManagerInterface;
-use Zend\EventManager\EventsCapableInterface;
-use Zend\EventManager\ListenerAggregateInterface;
-use Zend\EventManager\SharedEventManager;
-use Zend\EventManager\SharedEventManagerInterface;
-use Zend\EventManager\Test\EventListenerIntrospectionTrait;
-use Zend\Mvc\Application;
-use Zend\Mvc\MvcEvent;
-use Zend\Mvc\Console\Service\ConsoleViewManagerFactory;
-use Zend\Mvc\Console\View\DefaultRenderingStrategy;
-use Zend\Mvc\Console\View\ExceptionStrategy;
-use Zend\Mvc\Console\View\CreateViewModelListener;
-use Zend\Mvc\Console\View\InjectNamedConsoleParamsListener;
-use Zend\Mvc\Console\View\InjectViewModelListener;
-use Zend\Mvc\Console\View\RouteNotFoundStrategy;
-use Zend\Mvc\Console\View\ViewManager;
-use Zend\Mvc\Service\ServiceListenerFactory;
-use Zend\Mvc\Service\ServiceManagerConfig;
-use Zend\ServiceManager\ServiceManager;
-use Zend\Stdlib\DispatchableInterface;
-use Zend\View\View;
 
 /**
  * Tests for {@see ViewManager}
  *
- * @covers \Zend\Mvc\Console\View\ViewManager
+ * @covers \Laminas\Mvc\Console\View\ViewManager
  */
 class ViewManagerTest extends TestCase
 {
@@ -149,7 +150,7 @@ class ViewManagerTest extends TestCase
     }
 
     /**
-     * Create an event manager instance based on zend-eventmanager version
+     * Create an event manager instance based on laminas-eventmanager version
      *
      * @return EventManager
      */
@@ -281,11 +282,11 @@ class ViewManagerTest extends TestCase
         $manager->onBootstrap($event);
 
         $exceptionStrategy = $this->services->get('ConsoleExceptionStrategy');
-        $this->assertInstanceOf('Zend\Mvc\View\Console\ExceptionStrategy', $exceptionStrategy);
+        $this->assertInstanceOf('Laminas\Mvc\View\Console\ExceptionStrategy', $exceptionStrategy);
         $this->assertTrue($exceptionStrategy->displayExceptions());
 
         $routeNotFoundStrategy = $this->services->get('ConsoleRouteNotFoundStrategy');
-        $this->assertInstanceOf('Zend\Mvc\View\Console\RouteNotFoundStrategy', $routeNotFoundStrategy);
+        $this->assertInstanceOf('Laminas\Mvc\View\Console\RouteNotFoundStrategy', $routeNotFoundStrategy);
         $this->assertTrue($routeNotFoundStrategy->displayNotFoundReason());
     }
 
