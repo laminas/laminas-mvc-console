@@ -1,23 +1,24 @@
 <?php
+
 /**
- * @link      http://github.com/zendframework/zend-mvc-console for the canonical source repository
- * @copyright Copyright (c) 2005-2016 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
+ * @see       https://github.com/laminas/laminas-mvc-console for the canonical source repository
+ * @copyright https://github.com/laminas/laminas-mvc-console/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas/laminas-mvc-console/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZendTest\Mvc\Console\View;
+namespace LaminasTest\Mvc\Console\View;
 
+use Laminas\Console\Adapter\AbstractAdapter;
+use Laminas\EventManager\EventManager;
+use Laminas\EventManager\Test\EventListenerIntrospectionTrait;
+use Laminas\Mvc\ApplicationInterface;
+use Laminas\Mvc\Console\View\DefaultRenderingStrategy;
+use Laminas\Mvc\Console\View\Renderer;
+use Laminas\Mvc\MvcEvent;
+use Laminas\ServiceManager\ServiceManager;
+use Laminas\Stdlib\Response;
+use Laminas\View\Model;
 use PHPUnit_Framework_TestCase as TestCase;
-use Zend\Console\Adapter\AbstractAdapter;
-use Zend\EventManager\EventManager;
-use Zend\EventManager\Test\EventListenerIntrospectionTrait;
-use Zend\Mvc\ApplicationInterface;
-use Zend\Mvc\Console\View\DefaultRenderingStrategy;
-use Zend\Mvc\Console\View\Renderer;
-use Zend\Mvc\MvcEvent;
-use Zend\ServiceManager\ServiceManager;
-use Zend\Stdlib\Response;
-use Zend\View\Model;
 
 class DefaultRenderingStrategyTest extends TestCase
 {
