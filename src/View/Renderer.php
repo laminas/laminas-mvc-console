@@ -1,19 +1,18 @@
 <?php
+
 /**
- * Zend Framework (http://framework.zend.com/)
- *
- * @link      http://github.com/zendframework/zf2 for the canonical source repository
- * @copyright Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
+ * @see       https://github.com/laminas/laminas-mvc-console for the canonical source repository
+ * @copyright https://github.com/laminas/laminas-mvc-console/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas/laminas-mvc-console/blob/master/LICENSE.md New BSD License
  */
 
-namespace Zend\Mvc\Console\View;
+namespace Laminas\Mvc\Console\View;
 
-use Zend\Filter\FilterChain;
-use Zend\View\Model\ModelInterface;
-use Zend\View\Renderer\RendererInterface;
-use Zend\View\Renderer\TreeRendererInterface;
-use Zend\View\Resolver\ResolverInterface;
+use Laminas\Filter\FilterChain;
+use Laminas\View\Model\ModelInterface;
+use Laminas\View\Renderer\RendererInterface;
+use Laminas\View\Renderer\TreeRendererInterface;
+use Laminas\View\Resolver\ResolverInterface;
 
 /**
  * Render console view models.
@@ -131,7 +130,7 @@ class Renderer implements RendererInterface, TreeRendererInterface
     }
 
     /**
-     * @see Zend\View\Renderer\TreeRendererInterface
+     * @see Laminas\View\Renderer\TreeRendererInterface
      * @return bool
      */
     public function canRenderTrees()

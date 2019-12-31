@@ -1,23 +1,24 @@
 <?php
+
 /**
- * @link      http://github.com/zendframework/zend-mvc-console for the canonical source repository
- * @copyright Copyright (c) 2005-2018 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
+ * @see       https://github.com/laminas/laminas-mvc-console for the canonical source repository
+ * @copyright https://github.com/laminas/laminas-mvc-console/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas/laminas-mvc-console/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZendTest\Mvc\Console\Service;
+namespace LaminasTest\Mvc\Console\Service;
 
 use Interop\Container\ContainerInterface;
+use Laminas\Mvc\Application;
+use Laminas\Mvc\Console\Service\ConsoleViewHelperManagerDelegatorFactory;
+use Laminas\Mvc\MvcEvent;
+use Laminas\Router\RouteMatch;
+use Laminas\Router\RouteStackInterface;
+use Laminas\View\Helper;
+use Laminas\View\HelperPluginManager;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
 use ReflectionMethod;
-use Zend\Mvc\Application;
-use Zend\Mvc\Console\Service\ConsoleViewHelperManagerDelegatorFactory;
-use Zend\Mvc\MvcEvent;
-use Zend\Router\RouteMatch;
-use Zend\Router\RouteStackInterface;
-use Zend\View\Helper;
-use Zend\View\HelperPluginManager;
 
 class ConsoleViewHelperManagerDelegatorFactoryTest extends TestCase
 {
@@ -38,9 +39,9 @@ class ConsoleViewHelperManagerDelegatorFactoryTest extends TestCase
         $this->setConsoleEnvironment(false);
 
         $this->plugins->setFactory(Helper\Url::class, Argument::type('callable'))->shouldNotBeCalled();
-        $this->plugins->setFactory('zendviewhelperurl', Argument::type('callable'))->shouldNotBeCalled();
+        $this->plugins->setFactory('laminasviewhelperurl', Argument::type('callable'))->shouldNotBeCalled();
         $this->plugins->setFactory(Helper\BasePath::class, Argument::type('callable'))->shouldNotBeCalled();
-        $this->plugins->setFactory('zendviewhelperbasepath', Argument::type('callable'))->shouldNotBeCalled();
+        $this->plugins->setFactory('laminasviewhelperbasepath', Argument::type('callable'))->shouldNotBeCalled();
 
         $this->assertSame(
             $this->plugins->reveal(),
@@ -53,9 +54,9 @@ class ConsoleViewHelperManagerDelegatorFactoryTest extends TestCase
         $this->setConsoleEnvironment(true);
 
         $this->plugins->setFactory(Helper\Url::class, Argument::type('callable'))->shouldBeCalled();
-        $this->plugins->setFactory('zendviewhelperurl', Argument::type('callable'))->shouldBeCalled();
+        $this->plugins->setFactory('laminasviewhelperurl', Argument::type('callable'))->shouldBeCalled();
         $this->plugins->setFactory(Helper\BasePath::class, Argument::type('callable'))->shouldBeCalled();
-        $this->plugins->setFactory('zendviewhelperbasepath', Argument::type('callable'))->shouldBeCalled();
+        $this->plugins->setFactory('laminasviewhelperbasepath', Argument::type('callable'))->shouldBeCalled();
 
         $this->assertSame(
             $this->plugins->reveal(),
