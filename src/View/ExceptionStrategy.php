@@ -1,18 +1,19 @@
 <?php
+
 /**
- * @link      http://github.com/zendframework/zend-mvc-console for the canonical source repository
- * @copyright Copyright (c) 2005-2016 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
+ * @see       https://github.com/laminas/laminas-mvc-console for the canonical source repository
+ * @copyright https://github.com/laminas/laminas-mvc-console/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas/laminas-mvc-console/blob/master/LICENSE.md New BSD License
  */
 
-namespace Zend\Mvc\Console\View;
+namespace Laminas\Mvc\Console\View;
 
-use Zend\EventManager\AbstractListenerAggregate;
-use Zend\EventManager\EventManagerInterface;
-use Zend\Mvc\Application;
-use Zend\Mvc\Console\View\ViewModel as ConsoleModel;
-use Zend\Mvc\MvcEvent;
-use Zend\Stdlib\ResponseInterface as Response;
+use Laminas\EventManager\AbstractListenerAggregate;
+use Laminas\EventManager\EventManagerInterface;
+use Laminas\Mvc\Application;
+use Laminas\Mvc\Console\View\ViewModel as ConsoleModel;
+use Laminas\Mvc\MvcEvent;
+use Laminas\Stdlib\ResponseInterface as Response;
 
 class ExceptionStrategy extends AbstractListenerAggregate
 {
