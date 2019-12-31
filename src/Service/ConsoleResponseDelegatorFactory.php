@@ -1,17 +1,18 @@
 <?php
+
 /**
- * @link      http://github.com/zendframework/zend-mvc-console for the canonical source repository
- * @copyright Copyright (c) 2005-2016 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
+ * @see       https://github.com/laminas/laminas-mvc-console for the canonical source repository
+ * @copyright https://github.com/laminas/laminas-mvc-console/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas/laminas-mvc-console/blob/master/LICENSE.md New BSD License
  */
 
-namespace Zend\Mvc\Console\Service;
+namespace Laminas\Mvc\Console\Service;
 
 use Interop\Container\ContainerInterface;
-use Zend\Console\Console;
-use Zend\Console\Response as ConsoleResponse;
-use Zend\ServiceManager\DelegatorFactoryInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
+use Laminas\Console\Console;
+use Laminas\Console\Response as ConsoleResponse;
+use Laminas\ServiceManager\DelegatorFactoryInterface;
+use Laminas\ServiceManager\ServiceLocatorInterface;
 
 /**
  * Delegator factory for the Response service.
@@ -26,7 +27,7 @@ class ConsoleResponseDelegatorFactory implements DelegatorFactoryInterface
      * @param string $name
      * @param callable $callback
      * @param null|array $options
-     * @return ConsoleResponse|\Zend\Http\Response
+     * @return ConsoleResponse|\Laminas\Http\Response
      */
     public function __invoke(ContainerInterface $container, $name, callable $callback, array $options = null)
     {
@@ -38,7 +39,7 @@ class ConsoleResponseDelegatorFactory implements DelegatorFactoryInterface
     }
 
     /**
-     * zend-servicemanager v2 compatibility.
+     * laminas-servicemanager v2 compatibility.
      *
      * Proxies to __invoke().
      *
@@ -46,7 +47,7 @@ class ConsoleResponseDelegatorFactory implements DelegatorFactoryInterface
      * @param string $name
      * @param string $requestedName
      * @param callable $callback
-     * @return ConsoleResponse|\Zend\Http\Response
+     * @return ConsoleResponse|\Laminas\Http\Response
      */
     public function createDelegatorWithName(ServiceLocatorInterface $container, $name, $requestedName, $callback)
     {

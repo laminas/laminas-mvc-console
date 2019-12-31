@@ -1,18 +1,18 @@
 # Console Controllers
 
-When using the zend-mvc integration with zend-console, a matched route results
-in dispatch of an action controller. In this chapter we will learn how ZF2
+When using the laminas-mvc integration with laminas-console, a matched route results
+in dispatch of an action controller. In this chapter we will learn how Laminas
 Controllers can interact with and return output to console window.
 
 ## AbstractConsoleController
 
-zend-mvc-console provides a controller implementation for use with
-[zend-mvc](https://zendframework.github.io/zend-mvc/),
-`Zend\Mvc\Controller\AbstractConsoleController`. The implementation
-extends from the zend-mvc [AbstractActionController](https://zendframework.github.io/zend-mvc/controllers/#abstractactioncontroller),
+laminas-mvc-console provides a controller implementation for use with
+[laminas-mvc](https://docs.laminas.dev/laminas-mvc/),
+`Laminas\Mvc\Controller\AbstractConsoleController`. The implementation
+extends from the laminas-mvc [AbstractActionController](https://docs.laminas.dev/laminas-mvc/controllers/#abstractactioncontroller),
 and provides the following functionality:
 
-- The method `setConsole(Zend\Console\Adapter\AdapterInterface $console)` allows
+- The method `setConsole(Laminas\Console\Adapter\AdapterInterface $console)` allows
   injecting a console adapter representing the current console environment. By
   default, the `ControllerManager` will inject this for you as part of
   controller instantiation.
@@ -27,16 +27,16 @@ and provides the following functionality:
 
 `AbstractRestfulController` implements each of the following interfaces:
 
-- `Zend\Stdlib\DispatchableInterface`
-- `Zend\Mvc\InjectApplicationEventInterface`
-- `Zend\EventManager\EventManagerAwareInterface`
+- `Laminas\Stdlib\DispatchableInterface`
+- `Laminas\Mvc\InjectApplicationEventInterface`
+- `Laminas\EventManager\EventManagerAwareInterface`
 
 The composed `EventManager` will be configured to listen on the following contexts:
 
-- `Zend\Stdlib\DispatchableInterface`
-- `Zend\Mvc\Controller\AbstractConsoleController`
-- `Zend\Mvc\Controller\AbstractActionController`
-- `Zend\Mvc\Controller\AbstractController`
+- `Laminas\Stdlib\DispatchableInterface`
+- `Laminas\Mvc\Controller\AbstractConsoleController`
+- `Laminas\Mvc\Controller\AbstractActionController`
+- `Laminas\Mvc\Controller\AbstractController`
 
 Additionally, if you extend the class, it will listen on the name of the
 extending class.
@@ -48,7 +48,7 @@ common interface and are created at the same time in the MVC workflow. [Console 
 match against command line arguments and provide a `defaults` array, which holds
 the `controller` and `action` keys. These correspond with controller aliases in
 the `ServiceManager`, and method names in the controller class. This is
-analogous to the way HTTP requests are handled under zend-mvc.
+analogous to the way HTTP requests are handled under laminas-mvc.
 
 In this example we'll use the following route:
 
@@ -95,8 +95,8 @@ Let's add that method to our controller.
 namespace Application\Controller;
 
 use Application\Model\Users;
-use Zend\Mvc\Controller\AbstractActionController;
-use Zend\View\Model\ViewModel;
+use Laminas\Mvc\Controller\AbstractActionController;
+use Laminas\View\Model\ViewModel;
 
 class IndexController extends AbstractActionController
 {
@@ -211,9 +211,9 @@ Here is an example of how to check if we are dealing with a console request:
 ```php
 namespace Application\Controller;
 
-use Zend\Mvc\Controller\AbstractActionController;
-use Zend\View\Model\ViewModel;
-use Zend\Console\Request as ConsoleRequest;
+use Laminas\Mvc\Controller\AbstractActionController;
+use Laminas\View\Model\ViewModel;
+use Laminas\Console\Request as ConsoleRequest;
 use RuntimeException;
 
 class IndexController extends AbstractActionController
@@ -252,10 +252,10 @@ and HTTP requests**:
 ```php
 namespace Application\Controller;
 
-use Zend\Mvc\Controller\AbstractActionController;
-use Zend\View\Model\ViewModel;
-use Zend\Console\Request as ConsoleRequest;
-use Zend\Http\Request as HttpRequest;
+use Laminas\Mvc\Controller\AbstractActionController;
+use Laminas\View\Model\ViewModel;
+use Laminas\Console\Request as ConsoleRequest;
+use Laminas\Http\Request as HttpRequest;
 use RuntimeException;
 
 class IndexController extends AbstractActionController
@@ -287,7 +287,7 @@ class IndexController extends AbstractActionController
 > ### AbstractConsoleController
 > 
 > The best way to ensure you always receive a console request instance is to extend
-> `Zend\Mvc\Controller\AbstractConsoleController`. This controller instance also
+> `Laminas\Mvc\Controller\AbstractConsoleController`. This controller instance also
 > exposes a new method, `getConsole()`, providing you access to the console
 > adapter, allowing you to use prompts, send output (including colorized output),
 > and more.
@@ -295,7 +295,7 @@ class IndexController extends AbstractActionController
 ## Reading values from console parameters
 
 There are several types of parameters recognized by the Console component, all
-of which are described in the [console routing chapter](https://zendframework.github.io/zend-console/routes/).
+of which are described in the [console routing chapter](https://docs.laminas.dev/laminas-console/routes/).
 Here, we'll focus on how to retrieve values from distinct parameters and flags.
 
 ### Positional parameters
