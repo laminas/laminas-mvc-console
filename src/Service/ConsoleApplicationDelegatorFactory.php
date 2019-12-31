@@ -1,16 +1,17 @@
 <?php
+
 /**
- * @link      http://github.com/zendframework/zend-mvc-console for the canonical source repository
- * @copyright Copyright (c) 2005-2016 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
+ * @see       https://github.com/laminas/laminas-mvc-console for the canonical source repository
+ * @copyright https://github.com/laminas/laminas-mvc-console/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas/laminas-mvc-console/blob/master/LICENSE.md New BSD License
  */
 
-namespace Zend\Mvc\Console\Service;
+namespace Laminas\Mvc\Console\Service;
 
 use Interop\Container\ContainerInterface;
-use Zend\Console\Console;
-use Zend\ServiceManager\DelegatorFactoryInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
+use Laminas\Console\Console;
+use Laminas\ServiceManager\DelegatorFactoryInterface;
+use Laminas\ServiceManager\ServiceLocatorInterface;
 
 /**
  * Delegator factory for the Application instance.
@@ -25,7 +26,7 @@ class ConsoleApplicationDelegatorFactory implements DelegatorFactoryInterface
      * @param string $name
      * @param callable $callback
      * @param null|array $options
-     * @return \Zend\Mvc\ApplicationInterface
+     * @return \Laminas\Mvc\ApplicationInterface
      */
     public function __invoke(ContainerInterface $container, $name, callable $callback, array $options = null)
     {
@@ -40,7 +41,7 @@ class ConsoleApplicationDelegatorFactory implements DelegatorFactoryInterface
     }
 
     /**
-     * zend-servicemanager v2 compatibility.
+     * laminas-servicemanager v2 compatibility.
      *
      * Proxies to __invoke().
      *
@@ -48,7 +49,7 @@ class ConsoleApplicationDelegatorFactory implements DelegatorFactoryInterface
      * @param string $name
      * @param string $requestedName
      * @param callable $callback
-     * @return \Zend\Mvc\ApplicationInterface
+     * @return \Laminas\Mvc\ApplicationInterface
      */
     public function createDelegatorWithName(ServiceLocatorInterface $container, $name, $requestedName, $callback)
     {

@@ -1,19 +1,20 @@
 <?php
+
 /**
- * @link      http://github.com/zendframework/zend-mvc-console for the canonical source repository
- * @copyright Copyright (c) 2005-2016 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
+ * @see       https://github.com/laminas/laminas-mvc-console for the canonical source repository
+ * @copyright https://github.com/laminas/laminas-mvc-console/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas/laminas-mvc-console/blob/master/LICENSE.md New BSD License
  */
 
-namespace Zend\Mvc\Console\Router;
+namespace Laminas\Mvc\Console\Router;
 
+use Laminas\Console\Request as ConsoleRequest;
+use Laminas\Console\RouteMatcher\DefaultRouteMatcher;
+use Laminas\Console\RouteMatcher\RouteMatcherInterface;
+use Laminas\Mvc\Console\Exception;
+use Laminas\Stdlib\ArrayUtils;
+use Laminas\Stdlib\RequestInterface as Request;
 use Traversable;
-use Zend\Console\RouteMatcher\DefaultRouteMatcher;
-use Zend\Console\Request as ConsoleRequest;
-use Zend\Console\RouteMatcher\RouteMatcherInterface;
-use Zend\Mvc\Console\Exception;
-use Zend\Stdlib\ArrayUtils;
-use Zend\Stdlib\RequestInterface as Request;
 
 class Simple implements RouteInterface
 {
@@ -59,7 +60,7 @@ class Simple implements RouteInterface
     /**
      * factory(): defined by Route interface.
      *
-     * @see    \Zend\Router\RouteInterface::factory()
+     * @see    \Laminas\Router\RouteInterface::factory()
      * @param  array|Traversable $options
      * @throws Exception\InvalidArgumentException
      * @return self
@@ -100,7 +101,7 @@ class Simple implements RouteInterface
     /**
      * match(): defined by Route interface.
      *
-     * @see     \Zend\Router\Route::match()
+     * @see     \Laminas\Router\Route::match()
      * @param   Request $request
      * @param   null|int $pathOffset
      * @return  RouteMatch
@@ -123,7 +124,7 @@ class Simple implements RouteInterface
     /**
      * assemble(): Defined by Route interface.
      *
-     * @see    \Zend\Router\RouteInterface::assemble()
+     * @see    \Laminas\Router\RouteInterface::assemble()
      * @param  array $params
      * @param  array $options
      * @return mixed
