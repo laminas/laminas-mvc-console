@@ -1,24 +1,24 @@
 <?php
+
 /**
- * @link      http://github.com/zendframework/zend-mvc-console for the canonical source repository
- * @copyright Copyright (c) 2016 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
+ * @see       https://github.com/laminas/laminas-mvc-console for the canonical source repository
+ * @copyright https://github.com/laminas/laminas-mvc-console/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas/laminas-mvc-console/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZendTest\Mvc\Console;
+namespace LaminasTest\Mvc\Console;
 
 use Interop\Container\ContainerInterface;
+use Laminas\EventManager\Test\EventListenerIntrospectionTrait;
+use Laminas\Mvc\Console\ResponseSender\ConsoleResponseSender;
+use Laminas\Mvc\Console\Service\ConsoleResponseSenderDelegatorFactory;
+use Laminas\Mvc\ResponseSender\SendResponseEvent;
+use Laminas\Mvc\SendResponseListener;
+use Laminas\Mvc\Service\SendResponseListenerFactory;
+use Laminas\Mvc\Service\ServiceManagerConfig;
+use Laminas\ServiceManager\Factory\InvokableFactory;
+use Laminas\ServiceManager\ServiceManager;
 use PHPUnit_Framework_TestCase as TestCase;
-use Zend\EventManager\Test\EventListenerIntrospectionTrait;
-use Zend\Mvc\Console\ResponseSender\ConsoleResponseSender;
-use Zend\Mvc\Console\Service\ConsoleResponseSenderDelegatorFactory;
-use Zend\Mvc\ResponseSender\SendResponseEvent;
-use Zend\Mvc\SendResponseListener;
-use Zend\Mvc\Service\SendResponseListenerFactory;
-use Zend\Mvc\Service\ServiceManagerConfig;
-use Zend\ServiceManager\ServiceManager;
-use Zend\ServiceManager\Factory\InvokableFactory;
-
 use ReflectionProperty;
 
 class ServiceManagerTest extends TestCase
