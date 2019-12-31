@@ -1,17 +1,18 @@
 <?php
+
 /**
- * @link      http://github.com/zendframework/zend-mvc-console for the canonical source repository
- * @copyright Copyright (c) 2005-2016 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
+ * @see       https://github.com/laminas/laminas-mvc-console for the canonical source repository
+ * @copyright https://github.com/laminas/laminas-mvc-console/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas/laminas-mvc-console/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZendTest\Mvc\Console\Router;
+namespace LaminasTest\Mvc\Console\Router;
 
+use Laminas\Console\Request;
+use Laminas\Mvc\Console\Router\Catchall;
+use Laminas\Mvc\Console\Router\RouteMatch;
+use Laminas\Stdlib\RequestInterface;
 use PHPUnit\Framework\TestCase;
-use Zend\Console\Request;
-use Zend\Mvc\Console\Router\Catchall;
-use Zend\Mvc\Console\Router\RouteMatch;
-use Zend\Stdlib\RequestInterface;
 
 class CatchallTest extends TestCase
 {

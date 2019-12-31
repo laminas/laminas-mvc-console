@@ -1,22 +1,23 @@
 <?php
+
 /**
- * @link      http://github.com/zendframework/zend-mvc-console for the canonical source repository
- * @copyright Copyright (c) 2005-2016 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
+ * @see       https://github.com/laminas/laminas-mvc-console for the canonical source repository
+ * @copyright https://github.com/laminas/laminas-mvc-console/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas/laminas-mvc-console/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZendTest\Mvc\Console\Router;
+namespace LaminasTest\Mvc\Console\Router;
 
 use ArrayObject;
+use Laminas\Console\Request as ConsoleRequest;
+use Laminas\Console\RouteMatcher\RouteMatcherInterface;
+use Laminas\Mvc\Console\Exception\InvalidArgumentException;
+use Laminas\Mvc\Console\Router\RouteMatch;
+use Laminas\Mvc\Console\Router\Simple;
+use Laminas\Router\Http\Segment;
+use Laminas\Stdlib\RequestInterface;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
-use Zend\Console\Request as ConsoleRequest;
-use Zend\Console\RouteMatcher\RouteMatcherInterface;
-use Zend\Mvc\Console\Exception\InvalidArgumentException;
-use Zend\Mvc\Console\Router\RouteMatch;
-use Zend\Mvc\Console\Router\Simple;
-use Zend\Router\Http\Segment;
-use Zend\Stdlib\RequestInterface;
 
 class SimpleTest extends TestCase
 {
@@ -682,7 +683,7 @@ class SimpleTest extends TestCase
             ],
 
             /**
-             * @bug ZF2-4315
+             * @bug Laminas-4315
              * @link https://github.com/zendframework/zf2/issues/4315
              */
             'literal-with-dashes' => [
