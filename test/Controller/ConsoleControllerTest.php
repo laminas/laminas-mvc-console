@@ -1,23 +1,24 @@
 <?php
+
 /**
- * @link      http://github.com/zendframework/zend-mvc-console for the canonical source repository
- * @copyright Copyright (c) 2005-2016 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
+ * @see       https://github.com/laminas/laminas-mvc-console for the canonical source repository
+ * @copyright https://github.com/laminas/laminas-mvc-console/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas/laminas-mvc-console/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZendTest\Mvc\Console\Controller;
+namespace LaminasTest\Mvc\Console\Controller;
 
+use Laminas\Console\Request as ConsoleRequest;
+use Laminas\Console\Response as ConsoleResponse;
+use Laminas\Http\Request as HttpRequest;
+use Laminas\Mvc\Console\Controller\Plugin\CreateConsoleNotFoundModel;
+use Laminas\Mvc\Console\View\ViewModel;
+use Laminas\Mvc\Controller\PluginManager;
+use Laminas\Mvc\MvcEvent;
+use Laminas\Router\RouteMatch;
+use Laminas\ServiceManager\Factory\InvokableFactory;
 use PHPUnit_Framework_TestCase as TestCase;
 use Prophecy\Argument;
-use Zend\Console\Request as ConsoleRequest;
-use Zend\Console\Response as ConsoleResponse;
-use Zend\Http\Request as HttpRequest;
-use Zend\Mvc\Console\Controller\Plugin\CreateConsoleNotFoundModel;
-use Zend\Mvc\Console\View\ViewModel;
-use Zend\Mvc\Controller\PluginManager;
-use Zend\Mvc\MvcEvent;
-use Zend\Router\RouteMatch;
-use Zend\ServiceManager\Factory\InvokableFactory;
 
 class ConsoleControllerTest extends TestCase
 {
@@ -52,7 +53,7 @@ class ConsoleControllerTest extends TestCase
     {
         $request = new HttpRequest();
 
-        $this->setExpectedException('\Zend\Mvc\Console\Exception\InvalidArgumentException');
+        $this->setExpectedException('\Laminas\Mvc\Console\Exception\InvalidArgumentException');
         $this->controller->dispatch($request);
     }
 
@@ -65,13 +66,13 @@ class ConsoleControllerTest extends TestCase
 
     public function testGetInjectedConsole()
     {
-        $consoleAdapter = $this->getMock('\Zend\Console\Adapter\AdapterInterface');
+        $consoleAdapter = $this->getMock('\Laminas\Console\Adapter\AdapterInterface');
 
         $controller = $this->controller->setConsole($consoleAdapter);
         $console = $this->controller->getConsole();
 
-        $this->assertInstanceOf('\Zend\Mvc\Console\Controller\AbstractConsoleController', $controller);
-        $this->assertInstanceOf('\Zend\Console\Adapter\AdapterInterface', $console);
+        $this->assertInstanceOf('\Laminas\Mvc\Console\Controller\AbstractConsoleController', $controller);
+        $this->assertInstanceOf('\Laminas\Console\Adapter\AdapterInterface', $console);
     }
 
     public function testNotFoundActionInvokesCreateConsoleNotFoundModelPlugin()
