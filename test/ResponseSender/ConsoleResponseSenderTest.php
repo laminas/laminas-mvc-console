@@ -1,17 +1,18 @@
 <?php
+
 /**
- * @link      http://github.com/zendframework/zend-mvc-console for the canonical source repository
- * @copyright Copyright (c) 2005-2016 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
+ * @see       https://github.com/laminas/laminas-mvc-console for the canonical source repository
+ * @copyright https://github.com/laminas/laminas-mvc-console/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas/laminas-mvc-console/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZendTest\Mvc\Console\ResponseSender;
+namespace LaminasTest\Mvc\Console\ResponseSender;
 
+use Laminas\Console\Response;
+use Laminas\Mvc\ResponseSender\SendResponseEvent;
+use Laminas\Stdlib\ResponseInterface;
+use LaminasTest\Mvc\Console\ResponseSender\TestAsset\ConsoleResponseSender;
 use PHPUnit\Framework\TestCase;
-use Zend\Console\Response;
-use Zend\Mvc\ResponseSender\SendResponseEvent;
-use Zend\Stdlib\ResponseInterface;
-use ZendTest\Mvc\Console\ResponseSender\TestAsset\ConsoleResponseSender;
 
 class ConsoleResponseSenderTest extends TestCase
 {

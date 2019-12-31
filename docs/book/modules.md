@@ -1,10 +1,10 @@
 # Modules
 
-zend-mvc-console integrates zend-mvc with zend-console; the integration also works with modules
+laminas-mvc-console integrates laminas-mvc with laminas-console; the integration also works with modules
 loaded with the
-[Module Manager](http://framework.zend.com/manual/current/en/modules/zend.module-manager.intro.html).
+[Module Manager](https://docs.laminas.dev/laminas.module-manager.intro.html).
 
-zend-mvc-console ships with a console-specific `RouteNotFoundStrategy` which is
+laminas-mvc-console ships with a console-specific `RouteNotFoundStrategy` which is
 responsible for displaying console usage information when:
 
 - the user has not provided any arguments; or
@@ -15,28 +15,28 @@ The strategy currently supports two types of information:
 
 ## Application Banner
 
-When using the console within a zend-mvc-console-enabled application, you can
+When using the console within a laminas-mvc-console-enabled application, you can
 invoke it via the application bootstrap:
 
 ```bash
 $ php public/index.php
 ```
 
-By default, it will simply output the current ZF 2 version, like this:
+By default, it will simply output the current Laminas 2 version, like this:
 
-![Basic console invocation](images/zend.console.empty.png)
+![Basic console invocation](images/laminas.console.empty.png)
 
 Our `Application` module (and any other module) can provide an **application
 banner**. In order to do so, our `Module` class has to implement
-`Zend\ModuleManager\Feature\ConsoleBannerProviderInterface`. As an example:
+`Laminas\ModuleManager\Feature\ConsoleBannerProviderInterface`. As an example:
 
 ```php
 // module/Application/Module.php
 <?php
 namespace Application;
 
-use Zend\ModuleManager\Feature\ConsoleBannerProviderInterface;
-use Zend\Console\Adapter\AdapterInterface as Console;
+use Laminas\ModuleManager\Feature\ConsoleBannerProviderInterface;
+use Laminas\Console\Adapter\AdapterInterface as Console;
 
 class Module implements ConsoleBannerProviderInterface
 {
@@ -65,7 +65,7 @@ glance which modules expose console commands.
 
 If we execute our console application now, we'll see the newly created banner:
 
-![Application banner](images/zend.console.banner.png)
+![Application banner](images/laminas.console.banner.png)
 
 Let's create and load a second module that provides a banner:
 
@@ -88,8 +88,8 @@ The `User` module will provide info about itself:
 <?php
 namespace User;
 
-use Zend\ModuleManager\Feature\ConsoleBannerProviderInterface;
-use Zend\Console\Adapter\AdapterInterface as Console;
+use Laminas\ModuleManager\Feature\ConsoleBannerProviderInterface;
+use Laminas\Console\Adapter\AdapterInterface as Console;
 
 class Module implements ConsoleBannerProviderInterface
 {
@@ -106,7 +106,7 @@ class Module implements ConsoleBannerProviderInterface
 Because the `User` module is loaded after the `Application` module, the result
 will look like this:
 
-![Two modules](images/zend.console.banner2.png)
+![Two modules](images/laminas.console.banner2.png)
 
 > ### Application Banner Display
 >
@@ -117,7 +117,7 @@ will look like this:
 ## Usage Information
 
 In order to display usage information, our Module class must implement
-`Zend\ModuleManager\Feature\ConsoleUsageProviderInterface`. Let's modify our
+`Laminas\ModuleManager\Feature\ConsoleUsageProviderInterface`. Let's modify our
 example and add the new method defined in that interface:
 
 ```php
@@ -125,9 +125,9 @@ example and add the new method defined in that interface:
 <?php
 namespace Application;
 
-use Zend\ModuleManager\Feature\ConsoleBannerProviderInterface;
-use Zend\ModuleManager\Feature\ConsoleUsageProviderInterface;
-use Zend\Console\Adapter\AdapterInterface as Console;
+use Laminas\ModuleManager\Feature\ConsoleBannerProviderInterface;
+use Laminas\ModuleManager\Feature\ConsoleUsageProviderInterface;
+use Laminas\Console\Adapter\AdapterInterface as Console;
 
 class Module implements
     ConsoleBannerProviderInterface,
@@ -160,14 +160,14 @@ class Module implements
 
 This will display the following information:
 
-![Console usage](images/zend.console.usage.png)
+![Console usage](images/laminas.console.usage.png)
 
 Similar to [application banners](#application-banner), multiple modules can
 provide usage information, which will be joined together and displayed to the
 user. The order in which usage information is displayed is the order in which
 modules are loaded.
 
-As you can see, the zend-mvc-console integration also prepends each module's
+As you can see, the laminas-mvc-console integration also prepends each module's
 usage with the module's name. This helps to visually separate commands by module
 &mdash; which is particularly useful when you have multiple modules providing
 commands.  By default, the component colorizes the module names in red.
@@ -193,7 +193,7 @@ public function getConsoleUsage(Console $console)
 }
 ```
 
-![Free-form usage text](images/zend.console.usage2.png)
+![Free-form usage text](images/laminas.console.usage2.png)
 
 > ### Usage Text is provided as-is
 >
@@ -220,7 +220,7 @@ public function getConsoleUsage(Console $console)
 }
 ```
 
-![Listing multiple commands](images/zend.console.usage3.png)
+![Listing multiple commands](images/laminas.console.usage3.png)
 
 > ### Command list Alignment
 >
@@ -252,7 +252,7 @@ public function getConsoleUsage(Console $console)
 }
 ```
 
-![Parameter lists](images/zend.console.usage4.png)
+![Parameter lists](images/laminas.console.usage4.png)
 
 This method can be used to display more than 2 columns of information:
 
@@ -269,7 +269,7 @@ public function getConsoleUsage(Console $console)
 }
 ```
 
-![Multiple columns](images/zend.console.usage5.png)
+![Multiple columns](images/laminas.console.usage5.png)
 
 > ### Alignment
 >
@@ -311,7 +311,7 @@ public function getConsoleUsage(Console $console)
 }
 ```
 
-![Mixed styles](images/zend.console.usage6.png)
+![Mixed styles](images/laminas.console.usage6.png)
 
 ## Best Practices
 
@@ -321,4 +321,4 @@ Here are the best practices when providing usage for your commands:
    containing the module's name and its version (if available); do not provide any
    other information.
 2. Your `getConsoleUsage()` method should *not* return the module's name, as it
-   is prepended automatically for you by the zend-mvc-console integration.
+   is prepended automatically for you by the laminas-mvc-console integration.
