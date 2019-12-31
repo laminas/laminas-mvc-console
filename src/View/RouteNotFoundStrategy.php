@@ -1,29 +1,30 @@
 <?php
+
 /**
- * @link      http://github.com/zendframework/zend-mvc-console for the canonical source repository
- * @copyright Copyright (c) 2005-2016 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
+ * @see       https://github.com/laminas/laminas-mvc-console for the canonical source repository
+ * @copyright https://github.com/laminas/laminas-mvc-console/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas/laminas-mvc-console/blob/master/LICENSE.md New BSD License
  */
 
-namespace Zend\Mvc\Console\View;
+namespace Laminas\Mvc\Console\View;
 
-use Zend\Console\Adapter\AdapterInterface as ConsoleAdapter;
-use Zend\Console\ColorInterface;
-use Zend\Console\Response as ConsoleResponse;
-use Zend\Console\Request as ConsoleRequest;
-use Zend\EventManager\AbstractListenerAggregate;
-use Zend\EventManager\EventManagerInterface;
-use Zend\ModuleManager\ModuleManagerInterface;
-use Zend\ModuleManager\Feature\ConsoleBannerProviderInterface;
-use Zend\ModuleManager\Feature\ConsoleUsageProviderInterface;
-use Zend\Mvc\Application;
-use Zend\Mvc\Console\Exception\RuntimeException;
-use Zend\Mvc\Console\View\ViewModel as ConsoleModel;
-use Zend\Mvc\MvcEvent;
-use Zend\ServiceManager\Exception\ServiceNotFoundException;
-use Zend\Stdlib\ResponseInterface as Response;
-use Zend\Stdlib\StringUtils;
-use Zend\Text\Table;
+use Laminas\Console\Adapter\AdapterInterface as ConsoleAdapter;
+use Laminas\Console\ColorInterface;
+use Laminas\Console\Request as ConsoleRequest;
+use Laminas\Console\Response as ConsoleResponse;
+use Laminas\EventManager\AbstractListenerAggregate;
+use Laminas\EventManager\EventManagerInterface;
+use Laminas\ModuleManager\Feature\ConsoleBannerProviderInterface;
+use Laminas\ModuleManager\Feature\ConsoleUsageProviderInterface;
+use Laminas\ModuleManager\ModuleManagerInterface;
+use Laminas\Mvc\Application;
+use Laminas\Mvc\Console\Exception\RuntimeException;
+use Laminas\Mvc\Console\View\ViewModel as ConsoleModel;
+use Laminas\Mvc\MvcEvent;
+use Laminas\ServiceManager\Exception\ServiceNotFoundException;
+use Laminas\Stdlib\ResponseInterface as Response;
+use Laminas\Stdlib\StringUtils;
+use Laminas\Text\Table;
 
 class RouteNotFoundStrategy extends AbstractListenerAggregate
 {
@@ -201,7 +202,7 @@ class RouteNotFoundStrategy extends AbstractListenerAggregate
          * Handle an application with no defined banners
          */
         if (! count($banners)) {
-            return "Zend Framework application\nUsage:\n";
+            return "Laminas application\nUsage:\n";
         }
 
         /*
@@ -414,7 +415,7 @@ class RouteNotFoundStrategy extends AbstractListenerAggregate
         }
 
         /*
-         * Use Zend\Text\Table to render the table.
+         * Use Laminas\Text\Table to render the table.
          * The last column will use the remaining space in console window
          * (minus 1 character to prevent double wrapping at the edge of the
          * screen).
@@ -435,7 +436,7 @@ class RouteNotFoundStrategy extends AbstractListenerAggregate
     /**
      * Report the 404 reason and/or exceptions
      *
-     * @param  \Zend\EventManager\EventInterface $e
+     * @param  \Laminas\EventManager\EventInterface $e
      * @return string
      */
     protected function reportNotFoundReason($e)

@@ -1,14 +1,15 @@
 <?php
+
 /**
- * @link      http://github.com/zendframework/zend-mvc-console for the canonical source repository
- * @copyright Copyright (c) 2005-2016 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
+ * @see       https://github.com/laminas/laminas-mvc-console for the canonical source repository
+ * @copyright https://github.com/laminas/laminas-mvc-console/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas/laminas-mvc-console/blob/master/LICENSE.md New BSD License
  */
 
-namespace Zend\Mvc\Console;
+namespace Laminas\Mvc\Console;
 
-use Zend\Mvc\SendResponseListener;
-use Zend\ServiceManager\Factory\InvokableFactory;
+use Laminas\Mvc\SendResponseListener;
+use Laminas\ServiceManager\Factory\InvokableFactory;
 
 class ConfigProvider
 {
@@ -36,6 +37,10 @@ class ConfigProvider
             'aliases' => [
                 'ConsoleDefaultRenderingStrategy' => View\DefaultRenderingStrategy::class,
                 'ConsoleRenderer'                 => View\Renderer::class,
+
+                // Legacy Zend Framework aliases
+                \Zend\Mvc\Console\View\DefaultRenderingStrategy::class => View\DefaultRenderingStrategy::class,
+                \Zend\Mvc\Console\View\Renderer::class => View\Renderer::class,
             ],
             'delegators' => [
                 'Application'               => [ Service\ConsoleApplicationDelegatorFactory::class ],
@@ -71,7 +76,11 @@ class ConfigProvider
                 'CreateConsoleNotFoundModel' => Controller\Plugin\CreateConsoleNotFoundModel::class,
                 'createConsoleNotFoundModel' => Controller\Plugin\CreateConsoleNotFoundModel::class,
                 'createconsolenotfoundmodel' => Controller\Plugin\CreateConsoleNotFoundModel::class,
-                'Zend\Mvc\Controller\Plugin\CreateConsoleNotFoundModel::class' => Controller\Plugin\CreateConsoleNotFoundModel::class,
+                'Laminas\Mvc\Controller\Plugin\CreateConsoleNotFoundModel::class' => Controller\Plugin\CreateConsoleNotFoundModel::class,
+
+                // Legacy Zend Framework aliases
+                'Zend\Mvc\Controller\Plugin\CreateConsoleNotFoundModel::class' => 'Laminas\Mvc\Controller\Plugin\CreateConsoleNotFoundModel::class',
+                \Zend\Mvc\Console\Controller\Plugin\CreateConsoleNotFoundModel::class => Controller\Plugin\CreateConsoleNotFoundModel::class,
             ],
             'factories' => [
                 Controller\Plugin\CreateConsoleNotFoundModel::class => InvokableFactory::class,
