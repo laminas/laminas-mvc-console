@@ -20,7 +20,7 @@
     <div class="container">
         
         <a class="logo-link navbar-brand offset-md-2" href="https://getlaminas.org/" data-tooltip data-placement="bottom" title="Go to the Laminas homepage">
-            <img src="../img/laminas-foundation-white.svg" height="28" alt="Lamnias">
+            <img src="../img/laminas-foundation-white.svg" height="28" alt="Laminas">
         </a>
         <a class="navbar-title" href="https://docs.laminas.dev/" data-tooltip data-placement="bottom" title="Go to the Laminas Documentation">
             Documentation
@@ -36,13 +36,17 @@
             
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a href="https://getlaminas.org/about" class="nav-link">About</a>
-                </li>
-                <li class="nav-item">
-                    <a href="https://getlaminas.org/blog" class="nav-link">Blog</a>
-                </li>
-                <li class="nav-item">
-                    <a href="https://docs.laminas.dev" class="nav-link">All Docs</a>
+                    <div class="dropdown">
+                        <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false">
+                            All Docs
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="https://docs.laminas.dev/components">Components</a>
+                            <a class="dropdown-item" href="https://docs.mezzio.dev/">Mezzio</a>
+                            <a class="dropdown-item" href="https://api-tools.getlaminas.org/docs">API Tools</a>
+                            <a class="dropdown-item" href="https://docs.laminas.dev/mvc">MVC</a>
+                        </div>
+                    </div>
                 </li>
                 <li class="nav-item">
                     <a href="https://getlaminas.org/participate" class="nav-link">Community</a>
@@ -405,19 +409,18 @@ above tables for details on what service names to override.</p>
 <p><code>Laminas\Mvc\Console\View\ViewManager</code> acts similarly to its <a href="http://docs.laminas.dev/laminas-mvc/services/#viewmanager">laminas-mvc
 equivalent</a>, and
 will look for one or the other of the following configuration structures:</p>
-<p> <div class=codehilite><pre><span></span><span class=x>return [</span>
-<span class=x>    &#39;view_manager&#39; =&gt; [</span>
-<span class=x>        &#39;mvc_strategies&#39; =&gt; $stringOrArrayOfMvcListenerServiceNames,</span>
-<span class=x>        &#39;strategies&#39;     =&gt; $stringOrArrayOfViewListenerServiceNames,</span>
-<span class=x>    ],</span>
-<span class=x>    &#39;console&#39;      =&gt; [</span>
-<span class=x>        &#39;view_manager&#39; =&gt; [</span>
-<span class=x>            &#39;mvc_strategies&#39; =&gt; $stringOrArrayOfMvcListenerServiceNames,</span>
-<span class=x>            &#39;strategies&#39;     =&gt; $stringOrArrayOfViewListenerServiceNames,</span>
-<span class=x>        ],</span>
-<span class=x>    ],</span>
-<span class=x>];</span>
-</pre></div></p>
+<pre class=codehilite><code class=language-php>return [
+    'view_manager' =&gt; [
+        'mvc_strategies' =&gt; $stringOrArrayOfMvcListenerServiceNames,
+        'strategies'     =&gt; $stringOrArrayOfViewListenerServiceNames,
+    ],
+    'console'      =&gt; [
+        'view_manager' =&gt; [
+            'mvc_strategies' =&gt; $stringOrArrayOfMvcListenerServiceNames,
+            'strategies'     =&gt; $stringOrArrayOfViewListenerServiceNames,
+        ],
+    ],
+];</code></pre>
 <p>Preference is given to those under the <code>console</code> top-level key (those under
 <code>view_manager</code> are ignored if the <code>console.view_manager</code> structure exists).</p>
 <p><code>mvc_strategies</code> refers to view-related listeners that need to operate on the
@@ -591,9 +594,10 @@ on the <code>Laminas\View\ViewEvent</code> context.</p>
             <div class="col-md-7 offset-md-2">
                 <h5>Laminas</h5>
                 <ul>
-                    <li>Laminas Project <a href="https://getlaminas.org/">Components and MVC for Enterprise Applications</a></li>
-                    <li>Mezzio <a href="https://docs.mezzio.dev/">PSR-15 Middleware in Minutes</a></li>
-                    <li>Laminas API Tools: <a href="https://api-tools.getlaminas.org/">Build RESTful APIs in minutes</a></li>
+                    <li>Laminas Project <a href="https://getlaminas.org/">The new foundation for the community-supported, open source continuation of Zend Framework</a></li>
+                    <li>Laminas Components and MVC <a href="https://docs.laminas.dev/">Components and MVC for enterprise applications</a></li>
+                    <li>Mezzio <a href="https://docs.mezzio.dev/">PSR-15 middleware in minutes</a></li>
+                    <li>Laminas API Tools <a href="https://api-tools.getlaminas.org/">Build RESTful APIs in minutes</a></li>
                 </ul>
             </div>
         </div>
@@ -630,7 +634,7 @@ on the <code>Laminas\View\ViewEvent</code> context.</p>
                 <h4 class="footer__headline">License</h4>
                 <p>
                     Code licensed under <a
-                        href="https://github.com/laminas/laminas-mvc-console//blob/master/LICENSE.md">BSD 3-Clause</a>.
+                        href="https://github.com/laminas/laminas-mvc-console/blob/master/LICENSE.md">BSD 3-Clause</a>.
                 </p>
             </div>
 
@@ -639,8 +643,8 @@ on the <code>Laminas\View\ViewEvent</code> context.</p>
                 <h4 class="footer__headline">Copyright</h4>
                 <p>
                     <!--Built with love by the Laminas team with the help of our
-                    <a href="https://github.com/laminas/laminas-mvc-console//graphs/contributors">contributors</a>.<br>-->
-                    &copy; 2019-2019 by <a href="https://getlaminas.org/">The Laminas Project</a>.
+                    <a href="https://github.com/laminas/laminas-mvc-console/graphs/contributors">contributors</a>.<br>-->
+                    &copy; 2019-2020 by <a href="https://getlaminas.org/">The Laminas Project</a>.
                 </p>
             </div>
         </div>
