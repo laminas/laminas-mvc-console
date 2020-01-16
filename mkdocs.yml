@@ -15,5 +15,5 @@ site_name: laminas-mvc-console
 site_description: 'Integration between laminas-mvc and laminas-console.'
 repo_url: 'https://github.com/laminas/laminas-mvc-console'
 extra:
-    project: Mvc
+    project: MVC
     show_special_homepage: true
