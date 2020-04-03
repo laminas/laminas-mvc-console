@@ -317,7 +317,8 @@ MVC-based console tooling to use other libraries, such as
 laminas-mvc releases prior to v3, as it is not compatible.</p>
 </blockquote>
 <h2 id="installation">Installation</h2>
-<pre class=codehilite><code class=language-console>$ composer require laminas/laminas-mvc-console</code></pre>
+<pre class="highlight"><code class="language-console">$ composer require laminas/laminas-mvc-console</code></pre>
+
 <p>Assuming you are using the <a href="https://docs.laminas.dev/laminas-component-installer">component
 installer</a>, doing so
 will enable the component in your application, allowing you to immediately start
@@ -328,19 +329,17 @@ developing console applications via your MVC.</p>
 component as a module at the start of your module list in your Laminas
 application.</p>
 <p>If using a vanilla skeleton application, update <code>config/application.config.php</code>:</p>
-<pre class="codehilite"><code class="language-php">
-'modules' =&gt; [
+<pre class="highlight"><code class="language-php">'modules' =&gt; [
     'Laminas\Mvc\Console', // add it to the top of your module list
     /* ... */
-]
-</code></pre>
+]</code></pre>
+
 <p>If using Laminas API Tools, update your <code>config/modules.config.php</code>:</p>
-<pre class="codehilite"><code class="language-php">
-return [
+<pre class="highlight"><code class="language-php">return [
     'Laminas\Mvc\Console', // add it to the top of your module list
     /* ... */
-];
-</code></pre>
+];</code></pre>
+
 </blockquote>
 <h2 id="migration">Migration</h2>
 <p>In order to separate the console tooling from laminas-mvc and provide it as a
@@ -621,5 +620,5 @@ standalone package, we needed to make a few changes. See the
 
 <!--
 MkDocs version : 1.1
-Build Date UTC : 2020-03-29 11:25:21
+Build Date UTC : 2020-04-03 18:18:36
 -->

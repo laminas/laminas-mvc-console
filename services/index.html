@@ -468,7 +468,7 @@ above tables for details on what service names to override.</p>
 <p><code>Laminas\Mvc\Console\View\ViewManager</code> acts similarly to its <a href="http://docs.laminas.dev/laminas-mvc/services/#viewmanager">laminas-mvc
 equivalent</a>, and
 will look for one or the other of the following configuration structures:</p>
-<pre class=codehilite><code class=language-php>return [
+<pre class="highlight"><code class="language-php">return [
     'view_manager' =&gt; [
         'mvc_strategies' =&gt; $stringOrArrayOfMvcListenerServiceNames,
         'strategies'     =&gt; $stringOrArrayOfViewListenerServiceNames,
@@ -480,6 +480,7 @@ will look for one or the other of the following configuration structures:</p>
         ],
     ],
 ];</code></pre>
+
 <p>Preference is given to those under the <code>console</code> top-level key (those under
 <code>view_manager</code> are ignored if the <code>console.view_manager</code> structure exists).</p>
 <p><code>mvc_strategies</code> refers to view-related listeners that need to operate on the
