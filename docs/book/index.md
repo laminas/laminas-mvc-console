@@ -4,7 +4,7 @@
 > MVC, and because better, more standalone solutions exist, **we will not be maintaining
 > laminas-mvc-console long term**. We strongly urge developers to start migrating their
 > MVC-based console tooling to use other libraries, such as
-> [symfony/console](https://github.com/symfony/console).
+> [laminas/laminas-cli](https://github.com/laminas/laminas-cli).
 
 ---
 
