@@ -12,10 +12,12 @@ use Interop\Container\ContainerInterface;
 use Laminas\Mvc\Console\Router\ConsoleRouterDelegatorFactory;
 use LaminasTest\Mvc\Console\Service\FactoryEnvironmentTrait;
 use PHPUnit\Framework\TestCase;
+use Prophecy\PhpUnit\ProphecyTrait;
 
 class ConsoleRouterDelegatorFactoryTest extends TestCase
 {
     use FactoryEnvironmentTrait;
+    use ProphecyTrait;
 
     public function environments()
     {

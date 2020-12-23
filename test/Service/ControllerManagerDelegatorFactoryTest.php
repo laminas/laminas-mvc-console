@@ -16,10 +16,13 @@ use Laminas\Mvc\Controller\ControllerManager;
 use Laminas\ServiceManager\ServiceManager;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
+use Prophecy\PhpUnit\ProphecyTrait;
 use ReflectionClass;
 
 class ControllerManagerDelegatorFactoryTest extends TestCase
 {
+    use ProphecyTrait;
+
     public function isV3ServiceManager()
     {
         $r = new ReflectionClass(ServiceManager::class);

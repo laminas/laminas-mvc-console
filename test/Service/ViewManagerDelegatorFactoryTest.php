@@ -11,12 +11,14 @@ namespace LaminasTest\Mvc\Console\Service;
 use Interop\Container\ContainerInterface;
 use Laminas\Mvc\Console\Service\ViewManagerDelegatorFactory;
 use PHPUnit\Framework\TestCase;
+use Prophecy\PhpUnit\ProphecyTrait;
 
 class ViewManagerDelegatorFactoryTest extends TestCase
 {
     use FactoryEnvironmentTrait;
+    use ProphecyTrait;
 
-    public function setUp()
+    public function setUp() : void
     {
         $this->factory = new ViewManagerDelegatorFactory();
     }

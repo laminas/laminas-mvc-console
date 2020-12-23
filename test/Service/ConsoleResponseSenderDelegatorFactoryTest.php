@@ -16,9 +16,12 @@ use Laminas\Mvc\Console\Service\ConsoleResponseSenderDelegatorFactory;
 use Laminas\Mvc\ResponseSender\SendResponseEvent;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
+use Prophecy\PhpUnit\ProphecyTrait;
 
 class ConsoleResponseSenderDelegatorFactoryTest extends TestCase
 {
+    use ProphecyTrait;
+
     public function testAttachesConsoleResponseSenderToSendResponseListener()
     {
         $events = $this->prophesize(EventManagerInterface::class);

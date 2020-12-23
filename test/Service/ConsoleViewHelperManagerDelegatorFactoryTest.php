@@ -18,13 +18,15 @@ use Laminas\View\Helper;
 use Laminas\View\HelperPluginManager;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
+use Prophecy\PhpUnit\ProphecyTrait;
 use ReflectionMethod;
 
 class ConsoleViewHelperManagerDelegatorFactoryTest extends TestCase
 {
     use FactoryEnvironmentTrait;
+    use ProphecyTrait;
 
-    public function setUp()
+    public function setUp() : void
     {
         $this->container = $this->prophesize(ContainerInterface::class)->reveal();
         $this->plugins   = $this->prophesize(HelperPluginManager::class);
@@ -83,10 +85,16 @@ class ConsoleViewHelperManagerDelegatorFactoryTest extends TestCase
         $r = new ReflectionMethod($this->factory, 'createUrlHelperFactory');
         $r->setAccessible(true);
         $factory = $r->invoke($this->factory, $container->reveal());
-
         $helper = $factory();
 
-        $this->assertAttributeSame($router->reveal(), 'router', $helper);
-        $this->assertAttributeSame($routeMatch->reveal(), 'routeMatch', $helper);
+        $reflectionClass = new \ReflectionClass(get_class($helper));
+        $reflectionPropertyRouter = $reflectionClass->getProperty('router');
+        $reflectionPropertyRouter->setAccessible(true);
+
+        $reflectionPropertyRouteMatch = $reflectionClass->getProperty('routeMatch');
+        $reflectionPropertyRouteMatch->setAccessible(true);
+
+        $this->assertEquals($router->reveal(), $reflectionPropertyRouter->getValue($helper));
+        $this->assertEquals($routeMatch->reveal(), $reflectionPropertyRouteMatch->getValue($helper));
     }
 }

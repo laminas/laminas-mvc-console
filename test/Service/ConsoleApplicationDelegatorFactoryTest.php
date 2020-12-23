@@ -14,12 +14,14 @@ use Laminas\EventManager\ListenerAggregateInterface;
 use Laminas\Mvc\ApplicationInterface;
 use Laminas\Mvc\Console\Service\ConsoleApplicationDelegatorFactory;
 use PHPUnit\Framework\TestCase;
+use Prophecy\PhpUnit\ProphecyTrait;
 
 class ConsoleApplicationDelegatorFactoryTest extends TestCase
 {
     use FactoryEnvironmentTrait;
+    use ProphecyTrait;
 
-    public function setUp()
+    public function setUp() : void
     {
         $this->factory = new ConsoleApplicationDelegatorFactory();
     }

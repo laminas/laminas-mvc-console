@@ -39,6 +39,7 @@ use Laminas\Stdlib\DispatchableInterface;
 use Laminas\View\View;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
+use Prophecy\PhpUnit\ProphecyTrait;
 use ReflectionClass;
 use ReflectionProperty;
 
@@ -50,6 +51,7 @@ use ReflectionProperty;
 class ViewManagerTest extends TestCase
 {
     use EventListenerIntrospectionTrait;
+    use ProphecyTrait;
 
     /**
      * @var ServiceManager
@@ -66,7 +68,7 @@ class ViewManagerTest extends TestCase
      */
     private $factory;
 
-    public function setUp()
+    public function setUp() : void
     {
         $this->services = new ServiceManager();
         $this->prepareServiceManagerConfig()->configureServiceManager($this->services);

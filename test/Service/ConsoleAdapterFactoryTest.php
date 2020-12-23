@@ -13,13 +13,15 @@ use Laminas\Console\Adapter\AdapterInterface;
 use Laminas\Console\Charset\CharsetInterface;
 use Laminas\Mvc\Console\Service\ConsoleAdapterFactory;
 use PHPUnit\Framework\TestCase;
+use Prophecy\PhpUnit\ProphecyTrait;
 use stdClass;
 
 class ConsoleAdapterFactoryTest extends TestCase
 {
     use FactoryEnvironmentTrait;
+    use ProphecyTrait;
 
-    public function tearDown()
+    public function tearDown() : void
     {
         $this->setConsoleEnvironment(true);
     }
