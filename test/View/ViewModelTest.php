@@ -13,7 +13,7 @@ use PHPUnit\Framework\TestCase;
 
 class ViewModelTest extends TestCase
 {
-    public function setUp()
+    public function setUp() : void
     {
         $this->model = new ViewModel();
     }

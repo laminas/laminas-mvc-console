@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
+## 1.3.0 - TBD
+
+### Added
+
+- [#9](https://github.com/laminas/laminas-mvc-console/pull/9) added PHP 8.x support.
+
+### Changed
+
+- Nothing.
+
+### Deprecated
+
+- Nothing.
+
+### Removed
+
+- Nothing.
+
+### Fixed
+
+- Nothing.
+
 ## 1.2.1 - TBD
 
 ### Added

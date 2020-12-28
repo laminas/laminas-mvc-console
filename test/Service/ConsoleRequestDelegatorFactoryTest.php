@@ -11,12 +11,14 @@ namespace LaminasTest\Mvc\Console\Service;
 use Laminas\Console\Request;
 use Laminas\Mvc\Console\Service\ConsoleRequestDelegatorFactory;
 use PHPUnit\Framework\TestCase;
+use Prophecy\PhpUnit\ProphecyTrait;
 
 class ConsoleRequestDelegatorFactoryTest extends TestCase
 {
     use FactoryEnvironmentTrait;
+    use ProphecyTrait;
 
-    public function setUp()
+    public function setUp() : void
     {
         $this->factory = new ConsoleRequestDelegatorFactory();
     }

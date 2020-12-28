@@ -24,19 +24,21 @@ use Laminas\Mvc\Console\View\ViewModel;
 use Laminas\Mvc\MvcEvent;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
+use Prophecy\PhpUnit\ProphecyTrait;
 use ReflectionClass;
 use ReflectionMethod;
 
 class RouteNotFoundStrategyTest extends TestCase
 {
     use EventListenerIntrospectionTrait;
+    use ProphecyTrait;
 
     /**
      * @var RouteNotFoundStrategy
      */
     protected $strategy;
 
-    public function setUp()
+    public function setUp() : void
     {
         $this->strategy = new RouteNotFoundStrategy();
     }
@@ -140,7 +142,10 @@ class RouteNotFoundStrategyTest extends TestCase
         $event->getResult()->willReturn($response->reveal());
 
         $this->assertNull($this->strategy->handleRouteNotFoundError($event->reveal()));
-        $this->assertAttributeEquals($type, 'reason', $this->strategy);
+
+        $reason = new \ReflectionProperty($this->strategy, 'reason');
+        $reason->setAccessible(true);
+        $this->assertSame($type, $reason->getValue($this->strategy));
     }
 
     /**
@@ -260,7 +265,7 @@ class RouteNotFoundStrategyTest extends TestCase
         $r->setAccessible(true);
 
         $report = $r->invoke($this->strategy, $event);
-        $this->assertContains('Reason for failure: Unknown', $report);
-        $this->assertContains('Exception: EXCEPTION THROWN', $report);
+        $this->assertStringContainsString('Reason for failure: Unknown', $report);
+        $this->assertStringContainsString('Exception: EXCEPTION THROWN', $report);
     }
 }

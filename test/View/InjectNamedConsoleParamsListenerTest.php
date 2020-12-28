@@ -16,12 +16,14 @@ use Laminas\Mvc\Console\View\InjectNamedConsoleParamsListener;
 use Laminas\Mvc\MvcEvent;
 use Laminas\Stdlib\Parameters;
 use PHPUnit\Framework\TestCase;
+use Prophecy\PhpUnit\ProphecyTrait;
 
 class InjectNamedConsoleParamsListenerTest extends TestCase
 {
     use EventListenerIntrospectionTrait;
+    use ProphecyTrait;
 
-    public function setUp()
+    public function setUp() : void
     {
         $this->listener = new InjectNamedConsoleParamsListener();
     }

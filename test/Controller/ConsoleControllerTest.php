@@ -19,15 +19,18 @@ use Laminas\Router\RouteMatch;
 use Laminas\ServiceManager\Factory\InvokableFactory;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
+use Prophecy\PhpUnit\ProphecyTrait;
 
 class ConsoleControllerTest extends TestCase
 {
+    use ProphecyTrait;
+
     /**
      * @var TestAsset\ConsoleController
      */
     public $controller;
 
-    public function setUp()
+    public function setUp() : void
     {
         $this->controller = new TestAsset\ConsoleController();
 

@@ -48,9 +48,15 @@ class FactoryTester
             $classname::factory(0);
             $this->testCase->fail('An expected exception was not thrown');
         } catch (InvalidArgumentException $e) {
-            $this->testCase->assertContains('factory expects an array or Traversable set of options', $e->getMessage());
+            $this->testCase->assertStringContainsString(
+                'factory expects an array or Traversable set of options',
+                $e->getMessage()
+            );
         } catch (RouterInvalidArgumentException $e) {
-            $this->testCase->assertContains('factory expects an array or Traversable set of options', $e->getMessage());
+            $this->testCase->assertStringContainsString(
+                'factory expects an array or Traversable set of options',
+                $e->getMessage()
+            );
         }
 
         // Test required options.
@@ -63,9 +69,9 @@ class FactoryTester
                 $classname::factory($testOptions);
                 $this->testCase->fail('An expected exception was not thrown');
             } catch (InvalidArgumentException $e) {
-                $this->testCase->assertContains($exceptionMessage, $e->getMessage());
+                $this->testCase->assertStringContainsString($exceptionMessage, $e->getMessage());
             } catch (RouterInvalidArgumentException $e) {
-                $this->testCase->assertContains($exceptionMessage, $e->getMessage());
+                $this->testCase->assertStringContainsString($exceptionMessage, $e->getMessage());
             }
         }
 

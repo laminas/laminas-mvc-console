@@ -12,10 +12,13 @@ use Interop\Container\ContainerInterface;
 use Laminas\Mvc\Console\Service\ConsoleRouteNotFoundStrategyFactory;
 use Laminas\Mvc\Console\View\RouteNotFoundStrategy;
 use PHPUnit\Framework\TestCase;
+use Prophecy\PhpUnit\ProphecyTrait;
 
 class ConsoleRouteNotFoundStrategyFactoryTest extends TestCase
 {
-    public function setUp()
+    use ProphecyTrait;
+
+    public function setUp() : void
     {
         $this->container = $this->prophesize(ContainerInterface::class);
         $this->factory = new ConsoleRouteNotFoundStrategyFactory();
