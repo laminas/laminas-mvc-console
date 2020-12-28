@@ -244,7 +244,7 @@
             </div>
 
             
-            <div class="col-4 text-sm-right">
+            <div class="col-4 text-right">
                 
                     
 
@@ -406,12 +406,10 @@ return [
     ],
     /* ... */
 ];</code></pre>
-
 <p>This route will match commands such as:</p>
 <pre class="highlight"><code class="language-bash">$ php public/index.php show users
 $ php public/index.php show all users
 $ php public/index.php show disabled users</code></pre>
-
 <p>This route maps to the method <code>Application\Controller\IndexController::showUsersAction()</code>.</p>
 <p>Let's add that method to our controller.</p>
 <pre class="highlight"><code class="language-php">namespace Application\Controller;
@@ -462,7 +460,6 @@ class IndexController extends AbstractActionController
         }
     }
 }</code></pre>
-
 <p>We fetch the console request, read parameters, and load users from our
 (theoretical) users service.  In order to make this method functional, we'll
 have to display the result in the console window.</p>
@@ -508,7 +505,6 @@ return a string. Let's modify our example to output a list of users:</p>
 
     return $result; // show it in the console
 }</code></pre>
-
 <p>In the second conditional, we are checking if the users service found any users;
 if not, we return an error message to display immediately, terminating the
 application.</p>
@@ -543,7 +539,6 @@ class IndexController extends AbstractActionController
         /* ... */
     }
 }</code></pre>
-
 <blockquote>
 <h3>Use Routing to protect Methods</h3>
 <p>You do not need to secure all your controllers and methods from console
@@ -588,7 +583,6 @@ class IndexController extends AbstractActionController
         );
     }
 }</code></pre>
-
 <blockquote>
 <h3>AbstractConsoleController</h3>
 <p>The best way to ensure you always receive a console request instance is to extend
@@ -614,7 +608,6 @@ parameters</strong> via the <code>$request</code> instance, using the <code>getP
         ],
     ],
 ],</code></pre>
-
 <p>If this route matches, our action can now query parameters in the following way:</p>
 <pre class="highlight"><code class="language-php">// an action inside Application\Controller\UsersController:
 public function showUsersAction()
@@ -633,7 +626,6 @@ public function showUsersAction()
 
     /* ... */
 }</code></pre>
-
 <p>In case of parameter alternatives, it is a good idea to <strong>assign a name to the group</strong>, which
 simplifies the branching in our action controllers. We can do this with the following syntax:</p>
 <pre class="highlight"><code class="language-php">// inside of config.console.router.routes:
@@ -646,7 +638,6 @@ simplifies the branching in our action controllers. We can do this with the foll
         ],
     ],
 ]</code></pre>
-
 <p>Now we can use a the group name <code>userTypeFilter</code> to check which option has been
 selected by the user:</p>
 <pre class="highlight"><code class="language-php">public function showUsersAction()
@@ -671,7 +662,6 @@ selected by the user:</p>
             // ...
     }
 }</code></pre>
-
 <h3>Flags</h3>
 <p>Flags are directly accessible by name. Value-capturing flags will contain string
 values, as provided by the user. Non-value flags will be equal to <code>true</code>, or
@@ -686,7 +676,6 @@ values, as provided by the user. Non-value flags will be equal to <code>true</co
         ],
     ],
 ],</code></pre>
-
 <p>We can retrieve values in the following fashion:</p>
 <pre class="highlight"><code class="language-php">public function findAction()
 {
@@ -708,7 +697,6 @@ values, as provided by the user. Non-value flags will be equal to <code>true</co
         // perform standard query ...
     }
 }</code></pre>
-
 <p>In case of <strong>flag alternatives</strong>, we have to check each alternative separately:</p>
 <pre class="highlight"><code class="language-php">/*
  * Assuming our route now reads:
