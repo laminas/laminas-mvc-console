@@ -40,13 +40,7 @@ class RouteNotFoundStrategyTest extends TestCase
 
     public function setUp() : void
     {
-        $this->strategy = new class extends RouteNotFoundStrategy
-        {
-            public function getReason()
-            {
-                return $this->reason;
-            }
-        };
+        $this->strategy = new RouteNotFoundStrategy();
     }
 
     public function mockLoadedModules()
@@ -148,7 +142,10 @@ class RouteNotFoundStrategyTest extends TestCase
         $event->getResult()->willReturn($response->reveal());
 
         $this->assertNull($this->strategy->handleRouteNotFoundError($event->reveal()));
-        $this->assertEquals($type, $this->strategy->getReason());
+
+        $reason = new \ReflectionProperty($this->strategy, 'reason');
+        $reason->setAccessible(true);
+        $this->assertSame($type, $reason->getValue($this->strategy));
     }
 
     /**

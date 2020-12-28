@@ -94,7 +94,7 @@ class ConsoleViewHelperManagerDelegatorFactoryTest extends TestCase
         $reflectionPropertyRouteMatch = $reflectionClass->getProperty('routeMatch');
         $reflectionPropertyRouteMatch->setAccessible(true);
 
-        $this->assertEquals($router->reveal(), $reflectionPropertyRouter->getValue($helper));
-        $this->assertEquals($routeMatch->reveal(), $reflectionPropertyRouteMatch->getValue($helper));
+        $this->assertSame($router->reveal(), $reflectionPropertyRouter->getValue($helper));
+        $this->assertSame($routeMatch->reveal(), $reflectionPropertyRouteMatch->getValue($helper));
     }
 }
