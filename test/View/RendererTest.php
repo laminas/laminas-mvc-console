@@ -11,10 +11,13 @@ namespace Laminas\Mvc\Console\View;
 use Laminas\Filter\FilterChain;
 use Laminas\View\Model\ModelInterface;
 use PHPUnit\Framework\TestCase;
+use Prophecy\PhpUnit\ProphecyTrait;
 
 class RendererTest extends TestCase
 {
-    public function setUp()
+    use ProphecyTrait;
+
+    public function setUp() : void
     {
         $this->renderer = new Renderer();
     }

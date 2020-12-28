@@ -19,10 +19,12 @@ use Laminas\ServiceManager\ServiceManager;
 use Laminas\Stdlib\Response;
 use Laminas\View\Model;
 use PHPUnit\Framework\TestCase;
+use Prophecy\PhpUnit\ProphecyTrait;
 
 class DefaultRenderingStrategyTest extends TestCase
 {
     use EventListenerIntrospectionTrait;
+    use ProphecyTrait;
 
     /**
      * @var Renderer
@@ -34,7 +36,7 @@ class DefaultRenderingStrategyTest extends TestCase
      */
     protected $strategy;
 
-    public function setUp()
+    public function setUp() : void
     {
         $this->renderer = $this->prophesize(Renderer::class);
         $this->strategy = new DefaultRenderingStrategy($this->renderer->reveal());
@@ -97,7 +99,7 @@ class DefaultRenderingStrategyTest extends TestCase
         $event->setResponse($response);
         $this->strategy->render($event);
         $content = $response->getContent();
-        $this->assertNotContains('Page not found', $content);
+        $this->assertStringNotContainsString('Page not found', $content);
     }
 
     public function testIgnoresNonModel()

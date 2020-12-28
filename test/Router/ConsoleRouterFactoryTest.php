@@ -13,10 +13,13 @@ use Laminas\Mvc\Console\Router\ConsoleRouterFactory;
 use Laminas\Mvc\Console\Router\SimpleRouteStack;
 use Laminas\Router\RoutePluginManager;
 use PHPUnit\Framework\TestCase;
+use Prophecy\PhpUnit\ProphecyTrait;
 
 class ConsoleRouterFactoryTest extends TestCase
 {
-    public function setUp()
+    use ProphecyTrait;
+
+    public function setUp() : void
     {
         $this->container = $this->prophesize(ContainerInterface::class);
         $this->factory = new ConsoleRouterFactory();

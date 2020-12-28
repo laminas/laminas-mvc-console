@@ -18,9 +18,12 @@ use Laminas\Router\Http\Segment;
 use Laminas\Stdlib\RequestInterface;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
+use Prophecy\PhpUnit\ProphecyTrait;
 
 class SimpleTest extends TestCase
 {
+    use ProphecyTrait;
+
     public static function routeProvider()
     {
         return [

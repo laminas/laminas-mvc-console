@@ -12,10 +12,13 @@ use Interop\Container\ContainerInterface;
 use Laminas\Mvc\Console\Service\ConsoleExceptionStrategyFactory;
 use Laminas\Mvc\Console\View\ExceptionStrategy;
 use PHPUnit\Framework\TestCase;
+use Prophecy\PhpUnit\ProphecyTrait;
 
 class ConsoleExceptionStrategyFactoryTest extends TestCase
 {
-    public function setUp()
+    use ProphecyTrait;
+
+    public function setUp() : void
     {
         $this->container = $this->prophesize(ContainerInterface::class);
         $this->factory = new ConsoleExceptionStrategyFactory();

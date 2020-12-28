@@ -13,9 +13,12 @@ use Laminas\Mvc\Console\Router\Catchall;
 use Laminas\Mvc\Console\Router\RouteMatch;
 use Laminas\Stdlib\RequestInterface;
 use PHPUnit\Framework\TestCase;
+use Prophecy\PhpUnit\ProphecyTrait;
 
 class CatchallTest extends TestCase
 {
+    use ProphecyTrait;
+
     public function provideFactoryOptions()
     {
         return [

@@ -17,15 +17,17 @@ use Laminas\Mvc\Console\View\ViewModel;
 use Laminas\Mvc\MvcEvent;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
+use Prophecy\PhpUnit\ProphecyTrait;
 use RuntimeException;
 
 class ExceptionStrategyTest extends TestCase
 {
     use EventListenerIntrospectionTrait;
+    use ProphecyTrait;
 
     protected $strategy;
 
-    public function setUp()
+    public function setUp() : void
     {
         $this->strategy = new ExceptionStrategy();
     }
@@ -75,9 +77,17 @@ class ExceptionStrategyTest extends TestCase
     public function testMessageTokens($token, $found)
     {
         if ($found) {
-            $this->assertContains($token, $this->strategy->getMessage(), sprintf('%s token not in message', $token));
+            $this->assertStringContainsString(
+                $token,
+                $this->strategy->getMessage(),
+                sprintf('%s token not in message', $token)
+            );
         } else {
-            $this->assertNotContains($token, $this->strategy->getMessage(), sprintf('%s token in message', $token));
+            $this->assertStringNotContainsString(
+                $token,
+                $this->strategy->getMessage(),
+                sprintf('%s token in message', $token)
+            );
         }
     }
 
@@ -100,13 +110,13 @@ class ExceptionStrategyTest extends TestCase
     public function testPreviousMessageTokens($token, $found)
     {
         if ($found) {
-            $this->assertContains(
+            $this->assertStringContainsString(
                 $token,
                 $this->strategy->getMessage(),
                 sprintf('%s token not in previousMessage', $token)
             );
         } else {
-            $this->assertNotContains(
+            $this->assertStringNotContainsString(
                 $token,
                 $this->strategy->getMessage(),
                 sprintf('%s token in previousMessage', $token)
@@ -215,7 +225,7 @@ class ExceptionStrategyTest extends TestCase
                 $event->getResult()->getResult(),
                 sprintf('With an error of %s getResult should have been modified', $error)
             );
-            $this->assertContains(
+            $this->assertStringContainsString(
                 'message foo',
                 $event->getResult()->getResult(),
                 sprintf('With an error of %s getResult should have been modified', $error)
@@ -242,7 +252,11 @@ class ExceptionStrategyTest extends TestCase
         $events->triggerEvent($event); //$this->strategy->prepareExceptionViewModel($event);
 
         foreach ($messages as $message) {
-            $this->assertContains($message, $event->getResult()->getResult(), sprintf('Not all errors are rendered'));
+            $this->assertStringContainsString(
+                $message,
+                $event->getResult()->getResult(),
+                sprintf('Not all errors are rendered')
+            );
         }
     }
 

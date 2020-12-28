@@ -13,9 +13,12 @@ use Laminas\Mvc\ResponseSender\SendResponseEvent;
 use Laminas\Stdlib\ResponseInterface;
 use LaminasTest\Mvc\Console\ResponseSender\TestAsset\ConsoleResponseSender;
 use PHPUnit\Framework\TestCase;
+use Prophecy\PhpUnit\ProphecyTrait;
 
 class ConsoleResponseSenderTest extends TestCase
 {
+    use ProphecyTrait;
+
     public function testSendResponseIgnoresInvalidResponseTypes()
     {
         $mockResponse = $this->getMockForAbstractClass(ResponseInterface::class);

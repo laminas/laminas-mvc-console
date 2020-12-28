@@ -12,10 +12,12 @@ use Laminas\Mvc\Console\Service\ConsoleViewManagerFactory;
 use Laminas\Mvc\Console\View\ViewManager;
 use Laminas\ServiceManager\Exception\ServiceNotCreatedException;
 use PHPUnit\Framework\TestCase;
+use Prophecy\PhpUnit\ProphecyTrait;
 
 class ConsoleViewManagerFactoryTest extends TestCase
 {
     use FactoryEnvironmentTrait;
+    use ProphecyTrait;
 
     public function testRaisesExceptionWhenNotInConsoleEnvironment()
     {

@@ -13,9 +13,12 @@ use Laminas\Mvc\Console\Service\DefaultRenderingStrategyFactory;
 use Laminas\Mvc\Console\View\DefaultRenderingStrategy;
 use Laminas\Mvc\Console\View\Renderer;
 use PHPUnit\Framework\TestCase;
+use Prophecy\PhpUnit\ProphecyTrait;
 
 class DefaultRenderingStrategyFactoryTest extends TestCase
 {
+    use ProphecyTrait;
+
     public function testReturnsDefaultRenderingStrategyWithRendererInjected()
     {
         $renderer = $this->prophesize(Renderer::class)->reveal();
