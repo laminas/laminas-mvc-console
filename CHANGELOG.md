@@ -6,7 +6,7 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Added
 
-- Nothing.
+- [#9](https://github.com/laminas/laminas-mvc-console/pull/9) added PHP 8.x support.
 
 ### Changed
 
