@@ -1,5 +1,9 @@
 # laminas-mvc-console
 
+> This package is **abandoned** and will receive no further development!
+>
+> We recommend using [laminas/laminas-cli](https://docs.laminas.dev/laminas-cli/).
+
 [![Build Status](https://travis-ci.com/laminas/laminas-mvc-console.svg?branch=master)](https://travis-ci.com/laminas/laminas-mvc-console)
 [![Coverage Status](https://coveralls.io/repos/github/laminas/laminas-mvc-console/badge.svg?branch=master)](https://coveralls.io/github/laminas/laminas-mvc-console?branch=master)
 
